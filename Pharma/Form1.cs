@@ -32,7 +32,6 @@ namespace Pharma
         public Form1()
         {
             InitializeComponent();
-
             // Affichage Clients dans la DataGrid
             dataGridViewAfficheClients.DataSource = _imp.recupererTousClients();
         }
@@ -105,8 +104,7 @@ namespace Pharma
                             }
                         }
                     }
-
-                    // pour interet
+                    
                     bool _testOccurenceInteret = false;
                     for (int i = 0; i < _listeInteret.Count - 1; i++)
                     {
@@ -184,7 +182,7 @@ namespace Pharma
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            // GroupBox Gamme
+           
             MySqlDataReader _reader = _fc.LireDeBD("SELECT * FROM `gammes`");
             
             int a = 1;
@@ -210,7 +208,7 @@ namespace Pharma
             textBoxAutre.Top = (a + 1) * 21;
             
             panelGamme.Controls.Add(textBoxAutre);
-           // panelGamme.
+           
             _listeAutre.Add(textBoxAutre);
 
             // GroupBox Interet
@@ -318,8 +316,6 @@ namespace Pharma
         {
             byte _infoParSMS = (byte)dataGridViewAfficheClients.CurrentRow.Cells[9].Value;
             byte _infoParEMAIL = (byte)dataGridViewAfficheClients.CurrentRow.Cells[10].Value;
-            // textBoxCode.Text= dataGridViewAfficheClients.CurrentRow.Cells[0].Value.ToString();
-
             getCode = (int)dataGridViewAfficheClients.CurrentRow.Cells[0].Value ;
             txtBoxNom.Text = dataGridViewAfficheClients.CurrentRow.Cells[1].Value.ToString();
             txtBoxPrenom.Text = dataGridViewAfficheClients.CurrentRow.Cells[2].Value.ToString();
@@ -336,8 +332,6 @@ namespace Pharma
             List<Clients> _listeClientsfiltrer = new List<Clients>();
             List<Clients> _listeClients = _imp.recupererTousClients();
                 
-          
-
             for (int i = 0; i < _listeClients.LongCount(); i++)
             {
                 switch (_categorie)
@@ -419,7 +413,6 @@ namespace Pharma
 
             for(int i = 0; i < _listeGamme.Count;i++)
             {
-                // completer checked
                 _listeGamme[i].Enabled = false;
             }
             for (int i = 0; i < _listeInteret.Count; i++)
@@ -493,9 +486,6 @@ namespace Pharma
             txtBoxRemarque.Text = "";
             checkBoxInfoEmail.Checked = false;
             checkBoxInfoSMS.Checked = false;
-
-            // ****************************
-
             btnModifier.Visible = false;
             btnAjouter.Visible = false;
             btnSupprimer.Visible = false;
@@ -531,7 +521,6 @@ namespace Pharma
             switch (_mode)
             {
                 case MODE.Ajout: ajouter(); break;
-
                 case MODE.Consultation: fermer(); break;
                 case MODE.Modification: Modifier(); break;
             }
